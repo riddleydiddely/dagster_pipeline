@@ -21,7 +21,10 @@ defs = Definitions(
         #   https://docs.dagster.io/guides/dagster/using-environment-variables-and-secrets
         "io_manager": BigQueryPandasIOManager(
             project=EnvVar("BIGQUERY_PROJECT_ID"), dataset="hackernews"
-        )
+        ),
+        "bigquery": BigQueryPandasIOManager(
+           gcp_credentials=EnvVar("GCP_CREDENTIALS")
+       )
     },
     schedules=[daily_refresh_schedule],
 )
